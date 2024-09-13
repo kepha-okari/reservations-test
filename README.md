@@ -2,7 +2,9 @@ Sure! Below is an updated **README** file with **copy-paste ready** sample API r
 
 ---
 
-# Hotel Reservations App
+# Hotel Reservations App (CRUD API)
+
+🚀 Just taking NestJS for a test drive! 🏨
 
 This is a simple **Hotel Reservations** application built with **NestJS** for the backend and a **vanilla HTML/CSS/jQuery** frontend. The application allows users to create, update, view, and delete hotel reservations.
 
