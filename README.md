@@ -64,11 +64,27 @@ npm install
 ```
 
 ### 3. Configure MySQL:
-Make sure you have **MySQL** installed and running on your machine. Create a database named `hotel_reservations`:
+Make sure you have **MySQL** installed and running on your machine.(If note check out [this guide](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/) to set up MySQL. 
+). Create a database named `hotel_reservations`:
 
 ```sql
 CREATE DATABASE hotel_reservations;
+USE hotel_reservations;
+
+CREATE TABLE reservations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    guestName VARCHAR(255) NOT NULL,
+    roomNumber INT NOT NULL,
+    checkInDate DATE NOT NULL,
+    checkOutDate DATE NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
 ```
+
+
 
 ### 4. Build and run the application:
 
