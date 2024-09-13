@@ -2,7 +2,7 @@ Sure! Below is an updated **README** file with **copy-paste ready** sample API r
 
 ---
 
-# Hotel Reservations App (CRUD API)
+# Reservations App (CRUD API)
 
 🚀 Just taking NestJS for a test drive! 🏨
 
