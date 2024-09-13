@@ -1,5 +1,3 @@
-// src/reservations/entities/reservation.entity.ts
-
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

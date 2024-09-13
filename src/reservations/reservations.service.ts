@@ -1,49 +1,44 @@
-// src/reservations/reservations.service.ts
-
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository, DeleteResult } from 'typeorm';
 import { CreateReservationDto } from './dto/create-reservation.dto';
+import { Reservation } from './entities/reservation.entity';
 
 @Injectable()
 export class ReservationsService {
-  private reservations = [];  // In-memory storage for reservations
+  constructor(
+    @InjectRepository(Reservation)
+    private reservationsRepository: Repository<Reservation>,
+  ) {}
 
   // Create a new reservation
-  create(createReservationDto: CreateReservationDto) {
-    const newReservation = {
-      id: this.reservations.length + 1,
-      ...createReservationDto,
-    };
-    this.reservations.push(newReservation);
-    return newReservation;
+  async create(createReservationDto: CreateReservationDto): Promise<Reservation> {
+    const newReservation = this.reservationsRepository.create(createReservationDto);
+    return this.reservationsRepository.save(newReservation);
   }
 
   // Get all reservations
-  findAll() {
-    return this.reservations;
+  async findAll(): Promise<Reservation[]> {
+    return this.reservationsRepository.find();
   }
 
   // Get a single reservation by ID
-  findOne(id: number) {
-    return this.reservations.find(reservation => reservation.id === id);
+  async findOne(id: number): Promise<Reservation | null> {
+    return this.reservationsRepository.findOneBy({ id });
   }
 
   // Update a reservation by ID
-  update(id: number, updateReservationDto: CreateReservationDto) {
-    const reservation = this.findOne(id);
-    if (reservation) {
-      Object.assign(reservation, updateReservationDto);
-      return reservation;
+  async update(id: number, updateReservationDto: CreateReservationDto): Promise<Reservation | null> {
+    const reservation = await this.findOne(id);
+    if (!reservation) {
+      return null;
     }
-    return null;
+    Object.assign(reservation, updateReservationDto);
+    return this.reservationsRepository.save(reservation);
   }
 
   // Delete a reservation by ID
-  remove(id: number) {
-    const index = this.reservations.findIndex(reservation => reservation.id === id);
-    if (index !== -1) {
-      this.reservations.splice(index, 1);
-      return { message: `Reservation #${id} deleted successfully.` };
-    }
-    return { message: `Reservation not found.` };
+  async remove(id: number): Promise<DeleteResult> {
+    return this.reservationsRepository.delete(id);
   }
 }
