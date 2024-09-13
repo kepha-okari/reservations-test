@@ -3,7 +3,7 @@
 // Function to fetch all reservations and display them
 function fetchReservations() {
     $.ajax({
-        url: "http://localhost:3000/reservations",
+        url: "http://localhost:6090/reservations",
         type: "GET",
         success: function (data) {
             let reservations = data.data;
@@ -39,7 +39,7 @@ $('#createReservationForm').submit(function (e) {
     };
 
     $.ajax({
-        url: "http://localhost:3000/reservations",
+        url: "http://localhost:6090/reservations",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(data),
@@ -66,7 +66,7 @@ $('#updateReservationForm').submit(function (e) {
     };
 
     $.ajax({
-        url: `http://localhost:3000/reservations/update/${id}`,
+        url: `http://localhost:6090/reservations/update/${id}`,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(data),
@@ -87,7 +87,7 @@ $('#deleteReservationForm').submit(function (e) {
     const id = $('#deleteId').val();
 
     $.ajax({
-        url: `http://localhost:3000/reservations/delete/${id}`,
+        url: `http://localhost:6090/reservations/delete/${id}`,
         type: "POST",
         success: function () {
             alert('Reservation deleted successfully');
