@@ -1,0 +1,70 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Hotel Reservations</h1>
+
+    <!-- Form to Create a New Reservation -->
+    <section>
+        <h2>Create Reservation</h2>
+        <form id="createReservationForm">
+            <input type="text" id="guestName" placeholder="Guest Name" required><br>
+            <input type="number" id="roomNumber" placeholder="Room Number" required><br>
+            <input type="date" id="checkInDate" placeholder="Check-In Date" required><br>
+            <input type="date" id="checkOutDate" placeholder="Check-Out Date" required><br>
+            <button type="submit">Create Reservation</button>
+        </form>
+    </section>
+
+    <!-- List of All Reservations -->
+    <section>
+        <h2>Reservations List</h2>
+        <table id="reservationsTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Guest Name</th>
+                    <th>Room Number</th>
+                    <th>Check-In Date</th>
+                    <th>Check-Out Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Reservations will be dynamically added here -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Form to Update a Reservation -->
+    <section>
+        <h2>Update Reservation</h2>
+        <form id="updateReservationForm">
+            <input type="number" id="updateId" placeholder="Reservation ID" required><br>
+            <input type="text" id="updateGuestName" placeholder="Guest Name"><br>
+            <input type="number" id="updateRoomNumber" placeholder="Room Number"><br>
+            <input type="date" id="updateCheckInDate" placeholder="Check-In Date"><br>
+            <input type="date" id="updateCheckOutDate" placeholder="Check-Out Date"><br>
+            <button type="submit">Update Reservation</button>
+        </form>
+    </section>
+
+    <!-- Form to Delete a Reservation -->
+    <section>
+        <h2>Delete Reservation</h2>
+        <form id="deleteReservationForm">
+            <input type="number" id="deleteId" placeholder="Reservation ID" required><br>
+            <button type="submit">Delete Reservation</button>
+        </form>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
